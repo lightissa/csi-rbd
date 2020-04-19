@@ -1,0 +1,20 @@
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+   name: rbd-csi
+provisioner: rbd.csi.ceph.com
+parameters:
+   monitors: 192.168.1.212:6789,192.168.1.52:6789,192.168.1.198:6789
+   clusterID: aca3a34f-f790-4d21-b3f1-e270ef83612f
+   pool: kubernetes
+   imageFeatures: layering
+   csi.storage.k8s.io/provisioner-secret-name: csi-rbd-secret
+   csi.storage.k8s.io/provisioner-secret-namespace: default
+   csi.storage.k8s.io/node-stage-secret-name: csi-rbd-secret
+   csi.storage.k8s.io/node-stage-secret-namespace: default
+   adminid: admin
+   csi.storage.k8s.io/fstype: ext4
+reclaimPolicy: Delete
+mountOptions:
+   - discard

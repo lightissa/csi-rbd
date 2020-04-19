@@ -20,7 +20,7 @@ apiVersion: apps/v1
 metadata:
   name: csi-rbdplugin-provisioner
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: csi-rbdplugin-provisioner
